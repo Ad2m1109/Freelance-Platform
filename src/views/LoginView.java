@@ -1,45 +1,64 @@
-package views.auth;
-
+package views;
+import java.awt.*;
 import javax.swing.*;
-import controllers.AuthController;
-
+import views.freelancer.HomePage;
 public class LoginView extends JFrame {
-    private JTextField usernameField;
-    private JPasswordField passwordField;
-    
+        @SuppressWarnings("unused")
     public LoginView() {
-        setTitle("Login");
-        setSize(300, 200);
-        
-        JPanel panel = new JPanel();
-        panel.add(new JLabel("Username:"));
-        usernameField = new JTextField(15);
-        panel.add(usernameField);
-        
-        panel.add(new JLabel("Password:"));
-        passwordField = new JPasswordField(15);
-        panel.add(passwordField);
-        
-        JButton loginBtn = new JButton("Login");
-        loginBtn.addActionListener(e -> attemptLogin());
-        panel.add(loginBtn);
-        
-        add(panel);
-    }
-    
-    private void attemptLogin() {
-        AuthController auth = new AuthController();
-        User user = auth.login(
-            usernameField.getText(),
-            new String(passwordField.getPassword())
-        );
-        
-        if (user != null) {
-            // Open appropriate dashboard
-            dispose();
-            new MainView(user).setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(this, "Login failed");
-        }
+        setTitle("Login View");
+        setSize(400, 300);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+// header:
+        JPanel header = new JPanel();
+        JLabel title = new JLabel("Login", SwingConstants.CENTER);
+        title.setFont(new Font("Arial", Font.BOLD, 24));
+        header.add(title);
+
+// body:
+        JPanel body = new JPanel();
+        body.setLayout(new GridLayout(4, 2));
+        JLabel emailLabel = new JLabel("     Email:");
+        JTextField emailField = new JTextField();
+        JLabel passwordLabel = new JLabel("     Password:");
+        JPasswordField passwordField = new JPasswordField();
+        JCheckBox showPasswordCheckBox = new JCheckBox("Show Password");
+        JCheckBox rememberMeCheckBox = new JCheckBox("Remember Me");
+        rememberMeCheckBox.setSelected(true);
+        showPasswordCheckBox.addActionListener(e -> {
+                if (showPasswordCheckBox.isSelected()) {
+                        passwordField.setEchoChar((char) 0);
+                } else {
+                        passwordField.setEchoChar('•');
+                }
+                });
+        body.add(emailLabel);
+        body.add(emailField);
+        body.add(passwordLabel);
+        body.add(passwordField);
+        body.add(new JLabel(""));
+        body.add(showPasswordCheckBox);
+        body.add(new JLabel(""));
+        body.add(rememberMeCheckBox);
+
+// footer:
+        JPanel footer = new JPanel();
+        JButton loginButton = new JButton("Login");
+        JButton cancelButton = new JButton("Cancel");
+        loginButton.addActionListener(e -> {
+            this.dispose();
+            new HomePage().setVisible(true); 
+        });
+        cancelButton.addActionListener(e -> {
+            this.dispose();
+            new MainView().setVisible(true);
+        });
+        footer.add(loginButton);
+        footer.add(cancelButton);
+
+// main:
+        add(header, "North");
+        add(body, "Center");
+        add(footer, "South");
     }
 }

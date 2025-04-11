@@ -1,5 +1,4 @@
 package controllers;
-
 import models.User;
 import utils.DBConnector;
 
