@@ -1,27 +1,26 @@
 package views.user;
 import java.awt.*;
 import javax.swing.*;
-public class profile extends JFrame{
-    @SuppressWarnings("unused")
+public class profile extends JPanel{
     public profile() {
         setSize(800, 600);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLocationRelativeTo(null);
+        setLayout(new BorderLayout());
 
 // Header:
         JPanel header = new JPanel();
         header.setLayout(new GridLayout(2, 1));
-        JLabel title = new JLabel("User Home Page", SwingConstants.CENTER);
+        JLabel title = new JLabel("welcome adem youssfi", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 24));
-        //nav bar
-        navbar navBar = new navbar(this);
         
         header.add(title);
-        header.add(navBar);
 
 // Body
         JPanel body = new JPanel();
-      
+        JLabel nameLabel = new JLabel("profile");
+        body.add(nameLabel);
+        
+        
+        
 // Footer:
         JPanel footer = new JPanel();
 
@@ -29,6 +28,8 @@ public class profile extends JFrame{
         add(header, BorderLayout.NORTH);
         add(body, BorderLayout.CENTER);
         add(footer, BorderLayout.SOUTH);
-    }   
-    
+    }  
+    public static void main(String[] args) {
+        new profile().setVisible(true);  
+    }      
 }

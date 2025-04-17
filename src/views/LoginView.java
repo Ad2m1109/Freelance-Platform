@@ -32,13 +32,21 @@ public class LoginView extends JFrame {
                         passwordField.setEchoChar('•');
                 }
                 });
+        JLabel findpassword = new JLabel("     Forgot Password?");
+        findpassword.setForeground(Color.BLUE);
+        findpassword.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseClicked(java.awt.event.MouseEvent evt) {
+                        new findPassword().setVisible(true);
+                }
+        });
+
         body.add(emailLabel);
         body.add(emailField);
         body.add(passwordLabel);
         body.add(passwordField);
         body.add(new JLabel(""));
         body.add(showPasswordCheckBox);
-        body.add(new JLabel(""));
+        body.add(findpassword);
         body.add(rememberMeCheckBox);
 
 // footer:

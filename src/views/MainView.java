@@ -19,8 +19,8 @@ public class MainView extends JFrame {
         header.add(logo);
 //body:
         JPanel body = new JPanel();
-        JLabel title = new JLabel("Freelancer", SwingConstants.CENTER);
-        JLabel subtitle = new JLabel("Welcome to this freelance platform", SwingConstants.CENTER);
+        JLabel title = new JLabel("FreelanceHub", SwingConstants.CENTER);
+        JLabel subtitle = new JLabel("Find Top Talent or Work You Love", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 24));
         subtitle.setFont(new Font("Arial", Font.PLAIN, 16));
         body.setLayout(new BorderLayout());

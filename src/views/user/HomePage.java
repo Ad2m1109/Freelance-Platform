@@ -11,31 +11,36 @@ public class HomePage extends JFrame {
 
 // Header:
         JPanel header = new JPanel();
-        header.setLayout(new GridLayout(2, 1));
-        JLabel title = new JLabel("User Home Page", SwingConstants.CENTER);
-        title.setFont(new Font("Arial", Font.BOLD, 24));
-        //nav bar
-        navbar navBar = new navbar(this);
-        header.add(title);
-        header.add(navBar);
+        JButton logoutButton = new JButton("Logout");
+        logoutButton.addActionListener(e -> {
+            int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to logout?", "Confirm Logout", JOptionPane.YES_NO_OPTION);
+            if (response == JOptionPane.YES_OPTION) {
+                new MainView().setVisible(true);
+                dispose();
+            }
+        });
+
+        header.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        header.add(logoutButton);
 
 // Body
         JPanel body = new JPanel();
+        body.setLayout(new BorderLayout());
+        //nav bar
+        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.addTab("Profile", new profile());
+        tabbedPane.addTab("Projects", new Projects());
+        tabbedPane.addTab("Settings", new Settings());
+        tabbedPane.addTab("Notifications", new Notifications());
+        body.add(tabbedPane, BorderLayout.CENTER);
         
 // Footer:
         JPanel footer = new JPanel();
-        JButton logoutButton = new JButton("Logout");
-        logoutButton.addActionListener(e -> {
-            this.dispose();
-            new MainView().setVisible(true); // Redirect to MainView
-        });
         
-        footer.add(logoutButton);
 
         // Add panels to the frame
         add(header, BorderLayout.NORTH);
         add(body, BorderLayout.CENTER);
         add(footer, BorderLayout.SOUTH);
     }   
-    
 }

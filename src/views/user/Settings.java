@@ -2,9 +2,9 @@ package views.user;
 import java.awt.*;
 import javax.swing.*;
 import views.MainView;
-public class Notifications extends JPanel {
+public class Settings extends JPanel {
     @SuppressWarnings("unused")
-    public Notifications() {
+    public Settings() {
         setSize(800, 600);
         setLayout(new BorderLayout());
 
@@ -12,13 +12,13 @@ public class Notifications extends JPanel {
         JPanel header = new JPanel();
         header.setLayout(new GridLayout(2, 1));
 
-        JLabel title = new JLabel("Freelancer Notifications", SwingConstants.CENTER);
+        JLabel title = new JLabel("Freelancer Settings", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 24));
         header.add(title);
 
         // Body
         JPanel body = new JPanel();
-        JLabel nameLabel = new JLabel("Notifications");
+        JLabel nameLabel = new JLabel("Settings Page");
         body.add(nameLabel);
         // Footer
         JPanel footer = new JPanel();
